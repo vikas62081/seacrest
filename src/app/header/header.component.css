@@ -1,0 +1,17 @@
+/* .navbar {
+    
+    position: fixed;
+  } */
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .navbar-brand{
+      padding-left: 50px;
+}
+.navbar-header{
+    color: black;
+}
+.navbar-nav>li>a {
+    color: black;
+}

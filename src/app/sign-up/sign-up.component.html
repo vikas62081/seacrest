@@ -1,0 +1,135 @@
+
+  <app-header></app-header> 
+  
+  <div class="container well "> 
+     <h1 style="text-align: center;">Registration</h1>
+  <form [formGroup]="authService.signupform" class="normal-form" (ngSubmit)="onSubmit(authService.signupform.value)">
+    <mat-grid-list cols="3" rowHeight="500px">
+      <mat-grid-tile class="stream">
+        <div class="controles-container ">
+            <!-- <input type="hidden" formControlName="$key"> -->
+        <div class="add-bottom-padding">
+            <h4>Select your stream</h4>
+            <br>
+            <mat-radio-group formControlName="stream">
+
+                <ng-container *ngFor="let stream of streams">
+                    
+                    <mat-radio-button (click)="showOther()" value="{{stream.id}}" >{{stream.value}}</mat-radio-button>
+                    <br>
+                  </ng-container>
+              
+            </mat-radio-group>
+          </div>
+          </div>
+      </mat-grid-tile>
+        
+      <mat-grid-tile>
+        <div class="controles-container" *ngIf="show">
+            <mat-form-field>
+                <input formControlName="name" matInput placeholder="Full Name*">
+                <mat-error>This field is mandatory.</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input formControlName="rank" matInput placeholder="Rank">
+              </mat-form-field>
+
+              <mat-form-field>
+                <input formControlName="companyName" matInput placeholder="Company">
+              </mat-form-field>
+
+              
+
+              
+              
+             
+
+              <mat-form-field>
+                <input formControlName="dob" matInput [matDatepicker]="picker" placeholder=" DOB">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+              
+              <mat-form-field>
+                <mat-select formControlName="securityQuestionId" placeholder="Sequerity Question">
+                  <mat-option>None</mat-option>
+                  <ng-container *ngFor="let sequerityQuestion of sequerityQuestion">
+                    <mat-option value="{{sequerityQuestion.questionId}}">{{sequerityQuestion.question}}</mat-option>
+                  </ng-container>
+                  
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Enter your password*</mat-label>
+                <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+                <mat-error>This field is mandatory.</mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>RE ENTER PASSWORD*</mat-label>
+                <input matInput formControlName="reEnterPassword" [type]="hide ? 'password' : 'text'">
+                <mat-error>This field is mandatory.</mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+
+        </div> 
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="controles-container" *ngIf="show">
+            <mat-form-field>
+                <input formControlName="emailId" matInput placeholder="Email*">
+                <mat-error>Invalid email address.</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input formControlName="phoneNo" matInput placeholder="Mobile*">
+                <mat-error *ngIf="authService.signupform.controls['phoneNo'].errors?.required">This field is mandatory.</mat-error>
+                <mat-error *ngIf="authService.signupform.controls['phoneNo'].errors?.minlength">Minimum 8 charactors needed.</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input formControlName="cdcNo" matInput placeholder="CDC No">
+              </mat-form-field>
+
+              
+              <mat-form-field>
+                <input formControlName="examGrade" matInput placeholder="GRADE OF EXAM : ">
+              </mat-form-field>
+             
+              <mat-form-field>
+                <input formControlName="securityAnswer" matInput placeholder="Sequerity Answer">
+              </mat-form-field>
+
+              <mat-form-field>
+                <input formControlName="city" matInput placeholder="City*">
+                <mat-error>This field is mandatory.</mat-error>
+              </mat-form-field>
+                
+              <mat-form-field>
+                <input formControlName="country" matInput placeholder="Country*">
+                <mat-error>This field is mandatory.</mat-error>
+              </mat-form-field>
+
+              <div class="button-row">
+                <button mat-raised-button color="primary" type="submit" [disabled]="authService.signupform.invalid">Submit</button>
+                <button mat-raised-button color="warn" (click)="onClear()" >Clear</button>
+              </div>
+        </div>
+    </mat-grid-tile>
+    </mat-grid-list>
+    </form>
+  </div>
+
+
+
+
+
+<app-footer></app-footer>

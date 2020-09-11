@@ -1,0 +1,66 @@
+.well {
+    width: 800px;
+    height: 600px;
+  }
+
+  /* .well{
+    
+    background-color:floralwhite ;
+   
+} */
+
+
+
+/* div.container{
+    margin: 0px 40px;
+} */
+form.normal-form{
+    margin: 10px;
+}
+ .controles-container{
+    width: 100%;
+    padding: 5%;    
+}
+.controles-container > *,.full-width {
+width: 80%;
+}
+
+/* radio group */
+
+/* .stream{
+    
+    background-color: lawngreen;
+    padding-bottom: 100px;
+} */
+
+/* add gap b/w adjacent button */
+ .button-row button{
+    margin: 5px;
+}
+mat-radio-group mat-radio-button{
+    margin-left: 5px;
+}
+
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout.  */
+    flex: 1 1 auto;
+  }
+
+  .example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+  

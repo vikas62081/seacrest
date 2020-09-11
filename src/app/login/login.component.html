@@ -1,0 +1,41 @@
+<app-header></app-header> 
+
+<div class="container well "> 
+    <h1 style="text-align: center;">Please Sign in</h1>
+    <div *ngIf="invalidLogin" class="alert alert-danger">
+      Invalid username and/or password
+    </div>
+ <form [formGroup]="authService.loginform" class="normal-form" (ngSubmit)="onSubmit(authService.loginform.value)">
+   <mat-grid-list cols="1" rowHeight="400px">
+     <mat-grid-tile >
+       
+       <div class="controles-container ">
+          
+        <mat-form-field>
+            <input formControlName="emailId" matInput placeholder="Email*">
+           
+            <mat-error>Invalid email address.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your password*</mat-label>
+            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+            <mat-error>This field is mandatory.</mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          
+
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="authService.loginform.invalid">Submit</button>
+            
+          </div>
+       
+         </div>
+     </mat-grid-tile>
+    </mat-grid-list>
+</form>
+</div> 
+    
+<app-footer></app-footer>

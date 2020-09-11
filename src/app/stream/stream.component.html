@@ -1,0 +1,74 @@
+<app-header></app-header>
+<div class="container well "> 
+    <h2 style="text-align: center;">{{streamDataById.streamName}}</h2>
+    <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <!-- <div mat-card-avatar class="example-header-image"></div> -->
+          <!-- <mat-card-title >{{streamDataById.streamName}}</mat-card-title> -->
+          <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        </mat-card-header>
+        <img mat-card-image src={{streamDataById.imgUrl}} alt="Photo ">
+        <mat-card-content>
+          <p>
+           {{streamDataById.introduction}}
+          </p>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions> -->
+      </mat-card>
+    </div>
+    <div class="col-lg-2"></div>
+    </div>
+</div>
+
+
+<div class="container well "> 
+    <mat-grid-list cols="2" rowHeight="500px">
+        <mat-grid-tile class="subject">
+          <div class="controles-container ">
+               <!-- <input type="hidden" formControlName="$key"> -->
+          <div class="add-bottom-padding">
+              <h4>Select your Subject</h4>
+              <br>
+              <mat-radio-group>
+  
+                  <ng-container *ngFor="let subject of streamDataById.subjects">
+                      
+                      <mat-radio-button  (click)="showMaterialType(subject.id)" 
+                      value="{{subject.id}}">
+                          {{subject.subjectName}}
+                        </mat-radio-button>
+                      <br>
+                     
+                    </ng-container>
+                  
+
+                   
+              </mat-radio-group>
+            </div>
+            </div>
+        </mat-grid-tile>
+        <!--  -->
+        <mat-grid-tile *ngIf="show">
+            <mat-nav-list>
+                <mat-list-item *ngFor="let materialType of subjectDataById.materialTypes">
+                   <!-- <a matLine   routerLink="material/{{ materialType.materialName }}" ></a> -->
+                   <button mat-icon-button (click)="showInfo(materialType.materialLink, materialType.materialName)">
+                      <!-- <mat-icon>info</mat-icon> -->
+                      {{ materialType.materialName }}
+                   </button>
+                </mat-list-item>
+              </mat-nav-list>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+    
+ </div> 
+
+
+<app-footer></app-footer>

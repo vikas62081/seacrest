@@ -1,0 +1,52 @@
+
+
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+        <mat-list>
+            <mat-list-item >
+                
+                <button mat-icon-button (click)="showInfo()">
+                    User
+                  
+                </button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+             
+                
+                <button mat-icon-button (click)="showInfo()">
+                    security Question
+                   <!-- <mat-icon>info</mat-icon> -->
+                </button>
+
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-icon-button (click)="showInfo()">
+                    Stream
+                   <!-- <mat-icon>info</mat-icon> -->
+                </button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-icon-button (click)="showInfo()">
+                    Subject
+                   <!-- <mat-icon>info</mat-icon> -->
+                </button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-icon-button (click)="showInfo()">
+                    Material
+                   <!-- <mat-icon>info</mat-icon> -->
+                </button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+ 

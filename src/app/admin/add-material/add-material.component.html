@@ -1,0 +1,70 @@
+<div class="card" style="width:25rem">
+    <div class="card-body">
+      <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+        <!-- <div class="text-center">
+          <img [src]="imgSrc" width="350px" height="250px" (click)="fileUploader.click()">
+        </div> -->
+
+        <div class="form-group">
+            <select [(ngModel)]="selectedLevel" formControlName="streamId" class="form-control"  (change)="selected()" >
+              <!-- <option value="Animal">Animal</option> -->
+              <option *ngFor="let i of streams;" value="{{i.id}}" >{{i.value}} </option>
+              <!-- <option *ngFor="let i of streams;" value="{{i.id}},{{i.value}}" >{{i.value}}</option> -->
+              <!-- <option value="Vehicle">Vehicle</option>
+              <option value="Bird">Bird</option> -->
+            </select>
+          </div><br>
+
+          <div class="form-group">
+            <select  formControlName="subjectId" class="form-control">
+              <!-- <option value="Animal">Animal</option> -->
+              <option *ngFor="let i of subjectByStreamId;" value="{{i.id}}" >{{i.subjectName}}</option>
+              <!-- <option *ngFor="let i of streams;" value="{{i.id}},{{i.value}}" >{{i.value}}</option> -->
+              <!-- <option value="Vehicle">Vehicle</option>
+              <option value="Bird">Bird</option> -->
+            </select>
+          </div>
+          <br>
+
+          <div class="form-group">
+            <input class="form-control" formControlName="materialName" placeholder="materialName">
+            <div class="text-danger" *ngIf="isSubmitted && formControls.materialName.errors?.required">This field is required.
+            </div>
+          </div>
+
+
+        <div class="form-group">
+          <label>Select file to upload</label>
+          <input type="file" accept="image/*" class="form-control" #fileUploader formControlName="materialUrl"
+            (change)="showPreview($event)">
+          <div class="text-danger" *ngIf="isSubmitted && formControls.materialUrl.errors?.required">This field is required.
+          </div>
+        </div>
+
+       
+
+        <!-- <div class="form-group">
+           <input class="form-control" formControlName="caption" placeholder="Caption">
+          ​<textarea id="txtArea" rows="5" cols="30" class="form-control" formControlName="Introduction" placeholder="Introduction"></textarea>
+          <div class="text-danger" *ngIf="isSubmitted && formControls.Introduction.errors?.required">This field is required.
+          </div>
+        </div> -->
+       
+        <!-- <div class="form-group">
+          <select formControlName="category" class="form-control">
+            <option value="Animal">Animal</option>
+            <option value="Vehicle">Vehicle</option>
+            <option value="Bird">Bird</option>
+          </select>
+        </div> -->
+        <div class="form-row">
+          <!-- <div class="form-group col-md-6">
+            <a routerLink="/image/list" class="btn btn-primary btn-block float-right">Go To Gallery</a>
+          </div> -->
+          <div class="form-group col-md-6">
+            <button type="submit" class="btn btn-success btn-block float-right">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

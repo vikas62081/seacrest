@@ -1,0 +1,14 @@
+form.normal-form{
+    margin: 10px;
+}
+ .controles-container{
+    width: 100%;
+    padding: 5%;    
+}
+.controles-container > *,.full-width {
+width: 80%;
+}
+.well{
+   width: 600px;
+   
+}
