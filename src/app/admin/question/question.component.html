@@ -13,22 +13,28 @@
 
   <div class="mat-elevation-z8">
     <mat-table [dataSource]="listData"  matSort>
-      <ng-container matColumnDef="subjectId">
-        <mat-header-cell *matHeaderCellDef  mat-sort-header>subjectId</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.subjectId}}</mat-cell>
+      <ng-container matColumnDef="questionId">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header>questionId</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.questionId}}</mat-cell>
       </ng-container>
       <!-- <ng-container matColumnDef="phoneNo">
         <mat-header-cell *matHeaderCellDef  mat-sort-header>Phone No</mat-header-cell>
         <mat-cell *matCellDef="let element">{{element.phoneNo}}</mat-cell>
       </ng-container> -->
-      <ng-container matColumnDef="subjectName">
+      <ng-container matColumnDef="questionName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>questionName</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.questionName}}</mat-cell>
+      </ng-container>
+      <!-- <ng-container matColumnDef="subjectName">
         <mat-header-cell *matHeaderCellDef mat-sort-header>subjectName</mat-header-cell>
         <mat-cell *matCellDef="let element">{{element.subjectName}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="streamName">
+      </ng-container> -->
+
+      <!-- <ng-container matColumnDef="streamName">
         <mat-header-cell *matHeaderCellDef mat-sort-header>streamName</mat-header-cell>
         <mat-cell *matCellDef="let element">{{element.streamName}}</mat-cell>
-      </ng-container>
+      </ng-container> -->
+
       <!-- <ng-container matColumnDef="introduction">
         <mat-header-cell *matHeaderCellDef mat-sort-header>introduction</mat-header-cell>
         <mat-cell *matCellDef="let element">{{element.introduction}}</mat-cell>
@@ -41,7 +47,7 @@
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let row">
           <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
-          <button mat-icon-button color="warn" (click)="userService.DeleteSubject(row)"><mat-icon>delete_outline</mat-icon></button>
+          <button mat-icon-button color="warn" (click)="userService.deletequestionById(row.questionId)"><mat-icon>delete_outline</mat-icon></button>
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="loading">
@@ -63,3 +69,4 @@
   </div>
 
  
+

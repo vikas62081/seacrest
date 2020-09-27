@@ -12,35 +12,31 @@ import { AddStreamComponent } from '../add-stream/add-stream.component';
 })
 export class AdminStreamComponent implements OnInit {
 
-  constructor(private userService:UserService,
-    private notificationService:NotificationService,
-    private authService:AuthService,
-    private dialog: MatDialog,) { }
+  constructor(public userService:UserService,
+   private dialog: MatDialog) { 
+    this.userService.AllStream();
+   }
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['stramId', 'streamName', 'introduction','actions'];
+  displayedColumns: string[] = ['streamName', 'Introduction','actions'];
   @ViewChild(MatSort,{static: false}) sort: MatSort;
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
   searchKey: string;
   streamData:any;
   ngOnInit() {
-
-    this.userService.AllStream();
+    
+    
     setTimeout(()=>
     {
      
-    this.streamData=this.userService.getAllStreamData();
-   console.log("++++++++++++++++++++++++home"+JSON.stringify(this.streamData))
-    
-   
-        this.listData = new MatTableDataSource(this.streamData);
+    this.streamData=this.userService.streams;
+    this.listData = new MatTableDataSource(this.streamData);
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
-    },500);
+    },3000);
 
     
-      
-  }
+}
 
   onSearchClear() {
     this.searchKey = "";
@@ -51,15 +47,7 @@ export class AdminStreamComponent implements OnInit {
     this.listData.filter = this.searchKey.trim().toLowerCase();
   }
 
-  onDelete(streamId:any){
-    console.log("enter    "+streamId)
-    if(confirm('Are you sure to delete this record ?')){
-      
-    this.authService.deleteStreamById( streamId);
-
-    this.notificationService.warn('! Deleted successfully');
-    }
-  }
+  
 
   onCreate() {
     //this.authService.initializeFormGroup();
@@ -69,6 +57,9 @@ export class AdminStreamComponent implements OnInit {
     dialogConfig.width = "60%";
     this.dialog.open(AddStreamComponent,dialogConfig);
   }
+
+  onEdit(somevalue)
+  {}
  
 
 }

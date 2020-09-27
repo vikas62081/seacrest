@@ -11,10 +11,12 @@ import { AddMaterialComponent } from '../add-material/add-material.component';
   styleUrls: ['./admin-material.component.css']
 })
 export class AdminMaterialComponent implements OnInit {
-  constructor(private userService:UserService,
+  constructor(public userService:UserService,
     private notificationService:NotificationService,
     private authService:AuthService,
-    private dialog: MatDialog,) { }
+    private dialog: MatDialog) {
+      this.userService.findMaterialWithStream();
+     }
 
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['materialId', 'materialName','subjectName','streamName','actions'];
@@ -25,19 +27,19 @@ export class AdminMaterialComponent implements OnInit {
   subjects:any;
   SubjectData:any;
   ngOnInit() {
-    this.userService.findMaterialWithStream();
+    
    
    setTimeout(()=>
      {
       
-   this.materialData=this.userService.getMaterialDataWithStream();
+   this.materialData=this.userService.materialWithStream;
    
     
    
         this.listData = new MatTableDataSource(this.materialData);
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
-    },1000);
+    },4000);
 
     
       
@@ -71,6 +73,11 @@ export class AdminMaterialComponent implements OnInit {
     //  dialogConfig.height="40%";
     this.dialog.open(AddMaterialComponent,dialogConfig);
   }
+
+  onEdit(somevalue)
+  {}
+ 
+
  
 
 }

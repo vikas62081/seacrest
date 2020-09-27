@@ -13,10 +13,11 @@ import { FooterComponent } from './footer/footer.component';
 import {MatListModule} from '@angular/material/list';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireStorageModule } from "@angular/fire/storage";
-
+import { AngularFireDatabaseModule } from "@angular/fire/database";
+// import { PdfViewerModule } from 'ng2-pdf-viewer';
 import  { ReactiveFormsModule,FormsModule } from '@angular/forms';
-import { MaterialModule } from './material/material.module';
-
+// import { MaterialModule } from './material/material.module';
+// import {PdfViewerModule} from 'ng2-pdf-viewer'
 import {MatButtonModule,MatCheckboxModule,MatInputModule,
   MatFormFieldModule,MatRadioModule,MatNativeDateModule,
   MatDatepickerModule,MatSelectModule,MatGridListModule, MatIconModule,
@@ -40,6 +41,8 @@ import { SubjectComponent } from './admin/subject/subject.component';
 import { AddSubjectComponent } from './admin/add-subject/add-subject.component';
 import { AddMaterialComponent } from './admin/add-material/add-material.component';
 import { AdminMaterialComponent } from './admin/admin-material/admin-material.component';
+import { QuestionComponent } from './admin/question/question.component';
+import { AddquestionComponent } from './admin/addquestion/addquestion.component';
 // import {MatSidenavModule} from '@angular/material/sidenav';
 // import {MatToolbarModule} from '@angular/material/toolbar';
 // import {MatDividerModule} from '@angular/material/divider';
@@ -67,6 +70,8 @@ import { AdminMaterialComponent } from './admin/admin-material/admin-material.co
     AddSubjectComponent,
     AddMaterialComponent,
     AdminMaterialComponent,
+    QuestionComponent,
+    AddquestionComponent,
     
   ],
   imports: [
@@ -78,6 +83,7 @@ import { AdminMaterialComponent } from './admin/admin-material/admin-material.co
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
+    AngularFireDatabaseModule,
     // MaterialModule
 
     MatGridListModule, 
@@ -99,7 +105,8 @@ import { AdminMaterialComponent } from './admin/admin-material/admin-material.co
     MatTableModule,
     MatSortModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    // PdfViewerModule
    
   ],
   providers: [AuthService,
@@ -110,6 +117,7 @@ import { AdminMaterialComponent } from './admin/admin-material/admin-material.co
   entryComponents:[SignUpComponent,
     AddStreamComponent,
     AddSubjectComponent,
-  AddMaterialComponent]
+  AddMaterialComponent,
+AddquestionComponent]
 })
 export class AppModule { }

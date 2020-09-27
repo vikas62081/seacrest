@@ -11,6 +11,8 @@ import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
 import { AdminStreamComponent } from './admin/admin-stream/admin-stream.component';
 import { SubjectComponent } from './admin/subject/subject.component';
 import { AdminMaterialComponent } from './admin/admin-material/admin-material.component';
+import { QuestionComponent } from './admin/question/question.component';
+
 
 
 const routes: Routes = [
@@ -34,7 +36,8 @@ const routes: Routes = [
         { path: 'user', component: AdminHomeComponent },
         { path: 'stream', component: AdminStreamComponent },
         { path: 'subject', component: SubjectComponent },
-        { path: 'material', component: AdminMaterialComponent}
+        { path: 'material', component: AdminMaterialComponent},
+        { path: 'securityquestion', component: QuestionComponent}
        
     ]
 },

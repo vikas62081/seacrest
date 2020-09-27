@@ -22,7 +22,7 @@ export class SignUpComponent implements OnInit {
   { id: 2, value: 'MERCHANT NAVY ( FOR MMD/COC EXAMS)' },
   { id: 3, value: 'BSC NAUTICAL SCIENCE ' },
   { id: 4, value: '    BE MARINE ENGINEERING ' }];
-  constructor(private authService:AuthService,
+  constructor(public authService:AuthService,
     private router:Router,
    public dialogRef: MatDialogRef<SignUpComponent>,
     private notificationService: NotificationService) { }

@@ -34,7 +34,9 @@ export class AddMaterialComponent implements OnInit {
     private notificationService: NotificationService) { }
 
   ngOnInit() {
-    this.streams=this.userService.getStreamNameWithId()
+    this.streams=this.userService.streams;
+    console.log("stream value")
+    console.log(this.streams)
     this.resetForm();
   }
 
@@ -53,7 +55,7 @@ export class AddMaterialComponent implements OnInit {
 
   onSubmit(formValue) {
     this.isSubmitted = true;
-    console.log(JSON.stringify(formValue))
+    console.log("hiiiiiiiiiiii"+JSON.stringify(formValue))
     if (this.formTemplate.valid) {
       var filePath = `material/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
       const fileRef = this.storage.ref(filePath);
@@ -62,15 +64,14 @@ export class AddMaterialComponent implements OnInit {
           fileRef.getDownloadURL().subscribe((url) => {
             formValue['materialLink'] = url;
             console.log(formValue)
-            this.authService.addStream(formValue);
+            //this.authService.addStream(formValue);
        
-            this.userService.addMaterial(formValue).subscribe(response=>
-              {
+            this.userService.addMaterial(formValue)
                 this.formTemplate.reset();
                 //this.authService.initializeFormGroup();
                 this.notificationService.success(':: Submitted successfully');
                 this.onClose();
-              });
+              
 
 
            
@@ -106,11 +107,11 @@ export class AddMaterialComponent implements OnInit {
   }
 
   selected(){
-    console.log(this.selectedLevel)
+    // console.log(this.selectedLevel)
     let streamId=this.selectedLevel;
     
     this.subjectByStreamId=this.userService.getSubjectsByStreamId(streamId)
-    //console.log("inside  ts"+this.subjectByStreamId)
+    console.log(this.subjectByStreamId)
     
   }
  }

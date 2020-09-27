@@ -57,16 +57,15 @@
       </div>
 
       <div class="container well">
-       <div class="row">
+       <div class="row" style="padding: 10px">
            <div class="col-sm-3">
-            <h4>Select your stream</h4>
-            <br>
-            <mat-radio-group >
+            <h4 style="margin-left: 10px">Select your stream</h4>
+            <mat-radio-group>
 
                 <ng-container *ngFor="let stream of streamNamewithId">
                     
-                    <mat-radio-button  [routerLink]="['/stream',stream.id]"
-                    value="{{stream.id}}" >{{stream.value}}
+                    <mat-radio-button style="padding: 5px" [routerLink]="['/stream',stream.id]"
+                    value="{{stream.id}}" >{{stream.streamName}}
                   </mat-radio-button>
                     <br>
 
@@ -85,9 +84,11 @@
                     DOWNLOAD SEACREST AP FROM PLAY STORE OR APP STORE<br>
                     (LINK WILL BE SHARED HERE)
                    </div>
-                   <div class="col-sm-7">
-                    <p style="text-align: center;">QR CODE</p> <br>
-                    <img src="assets/images/QRcode.png" alt="Chicago">
+                   <div class="col-sm-7" align="center">
+                    <p style="text-align: center;">QR CODE</p>
+                    <div>
+                    <img src="assets/images/QRcode.png" alt="Chicago" style="width: 60%; height: 60%;">
+                  </div>
                    </div>
                </div>
             

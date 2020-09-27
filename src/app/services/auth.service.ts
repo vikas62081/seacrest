@@ -5,15 +5,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import * as _ from 'lodash';
 //import { map } from 'rxjs/internal/operators/map';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
+// import { Stream } from 'stream';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  // imageDetailList: AngularFireList<any>;
-
-  constructor(private http: HttpClient) { }
+  streamDetailList: AngularFireList<any>;
+  
+  
+  
+  constructor(private http: HttpClient,private firebase: AngularFireDatabase) { }
 
   signupform: FormGroup = new FormGroup({
     // $key: new FormControl(null),
@@ -111,12 +115,21 @@ export class AuthService {
   }
 
   //stream addsition part
-  addStream(formValue)
-  {
+  // addStream(formValue)
+  // {
     
-    return this.http.post("http://localhost:8090/authToAdmin/addStream",formValue);
+  //   return this.http.post("http://localhost:8090/authToAdmin/addStream",formValue);
+  // }
+
+  getstreamDetailList() {
+    this.streamDetailList = this.firebase.list('streamDetails');
+    
+    // console.log("inside getImageDetailList "+JSON.stringify(this.streamDetailList))
+    // return this.streamDetailList
   }
 
+ 
+ 
 
   populateForm(row){
     console.log("row data"+JSON.stringify(row))
@@ -220,6 +233,9 @@ export class AuthService {
         .subscribe( );
   
     }
+
+    //Question
+
   
 
 }

@@ -7,7 +7,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 div.container{
-    margin: 0px 40px;
+    /* margin: 0px 40px; */
+}
+.well{
+  padding: 5px;
+  margin-bottom: 5px;
+  width:95%;
+
 }
 
 .fill-remaining-space {
@@ -101,3 +107,6 @@ mat-footer-row mat-footer-cell{
     height: 40px;
     padding: 0px !important;
   }
+.mat-grid-tile .mat-figure {
+   display: block !important;
+}

@@ -19,9 +19,9 @@ export class HomeComponent implements OnInit {
     setTimeout(()=>
     {
      
-    this.streamNamewithId=this.userService.getStreamNameWithId()
+    this.streamNamewithId=this.userService.streams;
    console.log("++++++++++++++++++++++++home"+JSON.stringify(this.streamNamewithId))
-    },500);
+    },100);
     
   //this.userService.getStreamNameWithId();
   }

@@ -11,10 +11,12 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SubjectComponent implements OnInit {
 
-  constructor(private userService:UserService,
+  constructor(public userService:UserService,
     private notificationService:NotificationService,
     private authService:AuthService,
-    private dialog: MatDialog,) { }
+    private dialog: MatDialog) { 
+      this.userService.findSubjectWithStream();
+    }
 
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['subjectId', 'subjectName','streamName','actions'];
@@ -25,19 +27,19 @@ export class SubjectComponent implements OnInit {
   subjects:any;
   SubjectData:any;
   ngOnInit() {
-    this.userService.findSubjectWithStream();
+    
    
    setTimeout(()=>
      {
       
-   this.SubjectData=this.userService.getSubjectDataWithStream();
+   this.SubjectData=this.userService.SubjectWithStream;
    
     
    
         this.listData = new MatTableDataSource(this.SubjectData);
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
-    },1000);
+    },4000);
 
     
       
@@ -52,15 +54,7 @@ export class SubjectComponent implements OnInit {
     this.listData.filter = this.searchKey.trim().toLowerCase();
   }
 
-  onDelete(subjectId:any){
-    console.log("enter    "+subjectId)
-    if(confirm('Are you sure to delete this record ?')){
-      
-    this.authService.deleteSubjectById(subjectId);
-
-    this.notificationService.warn('! Deleted successfully');
-    }
-  }
+  
 
   onCreate() {
    // this.authService.initializeFormGroup();
@@ -72,5 +66,9 @@ export class SubjectComponent implements OnInit {
     this.dialog.open(AddSubjectComponent,dialogConfig);
   }
  
+  onEdit(somevalue)
+  {}
+ 
+
 
 }

@@ -24,14 +24,14 @@ export class AddSubjectComponent implements OnInit {
     // imageUrl: new FormControl('', Validators.required)
   })
 
-  constructor(private storage: AngularFireStorage, private userService: UserService,
-    
-    public dialogRef: MatDialogRef<AddSubjectComponent>,
+  constructor(private storage: AngularFireStorage,
+     private userService: UserService,
+ public dialogRef: MatDialogRef<AddSubjectComponent>,
     private notificationService: NotificationService) { }
 
   ngOnInit() {
-   this.streams= this.userService.getStreamNameWithId();
-   console.log(this.streams)
+   this.streams= this.userService.streams;
+   console.log("stream name with id"+this.streams)
     this.resetForm();
   }
 
@@ -39,20 +39,19 @@ export class AddSubjectComponent implements OnInit {
   onSubmit(formValue) {
     
     // this.isSubmitted=true
-   console.log(JSON.stringify(formValue.streamId)+"++++++++++++++")
+   //console.log(JSON.stringify(formValue.streamId)+"++++++++++++++")
  
   //  console.log(formValue.streamId['streamName'])
      let formData={stramId:formValue.streamId,
       subjects:{subjectName:formValue.subjectName}}
-      console.log(JSON.stringify(formData))
-      
-            this.userService.addStreamByAddingSubject(formData).subscribe(response=>
-              {
+      console.log("form value"+JSON.stringify(formData))
+     
+            this.userService.addSubject(formData)
                 this.formTemplate.reset();
                 //this.authService.initializeFormGroup();
                 this.notificationService.success(':: Submitted successfully');
                 this.onClose();
-              });
+             
 
  
   }
@@ -75,7 +74,7 @@ export class AddSubjectComponent implements OnInit {
       streamId: ''
     });
     
-    // this.isSubmitted = false;
+    
   }
 
  }

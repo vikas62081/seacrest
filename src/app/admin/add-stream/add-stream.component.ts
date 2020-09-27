@@ -6,6 +6,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from "rxjs/operators";
 import { NotificationService } from 'src/app/services/notification.service';
 import { MatDialogRef } from '@angular/material';
+import { UserService } from 'src/app/services/user.service';
 // import { MatDialog } from '@angular/material';
 
 
@@ -25,11 +26,12 @@ export class AddStreamComponent  {
     imageUrl: new FormControl('', Validators.required)
   })
 
-  constructor(private storage: AngularFireStorage, private authService: AuthService,
+  constructor(private storage: AngularFireStorage, private userService:UserService,
     public dialogRef: MatDialogRef<AddStreamComponent>,
     private notificationService: NotificationService) { }
 
   ngOnInit() {
+    // this.authService.getImageDetailList();
     this.resetForm();
   }
 
@@ -58,13 +60,12 @@ export class AddStreamComponent  {
             console.log(formValue)
             //this.authService.addStream(formValue);
        
-            this.authService.addStream(formValue).subscribe(response=>
-              {
+            this.userService.addStream(formValue)
+                
                 this.formTemplate.reset();
-                //this.authService.initializeFormGroup();
                 this.notificationService.success(':: Submitted successfully');
                 this.onClose();
-              });
+             
 
 
             ///
@@ -75,9 +76,12 @@ export class AddStreamComponent  {
     }
   }
 
+ 
+
+
   onClose() {
-    this.authService.signupform.reset();
-    this.authService.initializeFormGroup();
+    this.resetForm();
+    // this.authService.initializeFormGroup();
     this.dialogRef.close();
  }
 

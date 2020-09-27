@@ -12,7 +12,7 @@ export class StreamComponent implements OnInit {
    streamId:any;
    show=false;
    subjectDataById:any;
-  constructor(private userService:UserService,private route: ActivatedRoute,private router:Router) { }
+  constructor(public userService:UserService,private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
     this.streamId=this.route.snapshot.params.streamId;
@@ -20,12 +20,12 @@ export class StreamComponent implements OnInit {
   console.log(JSON.stringify(this.streamDataById))
    //console.log(this.streamDataById+"     data by id  ")
   }
-  showMaterialType(subjectId)
+  showMaterialType(subjectName)
   {
-    //console.log("inside show material"+id)
+   console.log("inside show material"+subjectName)
     for (let subject of this.streamDataById.subjects) {
       // console.log("++++++++++++++++++++"+stream.stramId,streamId);
-       if(subject.id==subjectId)
+       if(subject.subjectName==subjectName)
       {
         this.subjectDataById=subject;
         this.show=true;

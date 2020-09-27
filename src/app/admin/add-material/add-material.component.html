@@ -8,7 +8,7 @@
         <div class="form-group">
             <select [(ngModel)]="selectedLevel" formControlName="streamId" class="form-control"  (change)="selected()" >
               <!-- <option value="Animal">Animal</option> -->
-              <option *ngFor="let i of streams;" value="{{i.id}}" >{{i.value}} </option>
+              <option *ngFor="let i of streams;" value="{{i.id}}" >{{i.streamName}} </option>
               <!-- <option *ngFor="let i of streams;" value="{{i.id}},{{i.value}}" >{{i.value}}</option> -->
               <!-- <option value="Vehicle">Vehicle</option>
               <option value="Bird">Bird</option> -->
@@ -18,7 +18,7 @@
           <div class="form-group">
             <select  formControlName="subjectId" class="form-control">
               <!-- <option value="Animal">Animal</option> -->
-              <option *ngFor="let i of subjectByStreamId;" value="{{i.id}}" >{{i.subjectName}}</option>
+              <option *ngFor="let i of subjectByStreamId;  let j = index"  [attr.data-index]="j" value="{{j}}" >{{i.subjectName}}</option>
               <!-- <option *ngFor="let i of streams;" value="{{i.id}},{{i.value}}" >{{i.value}}</option> -->
               <!-- <option value="Vehicle">Vehicle</option>
               <option value="Bird">Bird</option> -->
@@ -35,7 +35,7 @@
 
         <div class="form-group">
           <label>Select file to upload</label>
-          <input type="file" accept="image/*" class="form-control" #fileUploader formControlName="materialUrl"
+          <input type="file" accept=".pdf" class="form-control" #fileUploader formControlName="materialUrl"
             (change)="showPreview($event)">
           <div class="text-danger" *ngIf="isSubmitted && formControls.materialUrl.errors?.required">This field is required.
           </div>

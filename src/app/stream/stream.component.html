@@ -1,46 +1,39 @@
 <app-header></app-header>
-<div class="container well "> 
+<div class="well " > 
     <h2 style="text-align: center;">{{streamDataById.streamName}}</h2>
-    <div class="row">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8">
+    <mat-grid-list cols="2">
+  <mat-grid-tile > 
     <mat-card class="example-card">
-        <mat-card-header>
+        <!-- <mat-card-header> -->
           <!-- <div mat-card-avatar class="example-header-image"></div> -->
           <!-- <mat-card-title >{{streamDataById.streamName}}</mat-card-title> -->
           <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
-        </mat-card-header>
-        <img mat-card-image src={{streamDataById.imgUrl}} alt="Photo ">
+
+        <!-- </mat-card-header> -->
+        
+
         <mat-card-content>
-          <p>
-           {{streamDataById.introduction}}
+           <img mat-card-image src={{streamDataById.imageUrl}} alt="Photo ">
+          <p>This study was a preliminary study of high school student value changes because of the terrorist attack on the U.S. The major limitations of this study were that the student population was from California and might not truly represent all high school students in the U.S. Further, this study could not be considered a truly longitudinal study because of privacy issues that prevented the researchers from identifying all the students who returned surveys before the attack. In addition, the senior class had graduated the previous year, and a much larger freshman class entered the school. These issues not only made the samples similar, but also different in their composition. The researchers will conduct periodic studies to explore whether these value changes are permanent and continue into adulthood. We do not know what if any changes will take place in their values as they grow older, and we will continue to explore their values in our longitudinal studies of the impact of the 9/11 terrorist attacks.
+
+
+           {{streamDataById.Introduction}}
           </p>
         </mat-card-content>
         <!-- <mat-card-actions>
           <button mat-button>LIKE</button>
           <button mat-button>SHARE</button>
         </mat-card-actions> -->
-      </mat-card>
-    </div>
-    <div class="col-lg-2"></div>
-    </div>
-</div>
-
-
-<div class="container well "> 
-    <mat-grid-list cols="2" rowHeight="500px">
-        <mat-grid-tile class="subject">
-          <div class="controles-container ">
-               <!-- <input type="hidden" formControlName="$key"> -->
-          <div class="add-bottom-padding">
-              <h4>Select your Subject</h4>
+      </mat-card></mat-grid-tile>
+  <mat-grid-tile> 
+    <h4>Select your Subject</h4>
               <br>
               <mat-radio-group>
   
                   <ng-container *ngFor="let subject of streamDataById.subjects">
                       
-                      <mat-radio-button  (click)="showMaterialType(subject.id)" 
-                      value="{{subject.id}}">
+                      <mat-radio-button  (click)="showMaterialType(subject.subjectName)" 
+                      value="{{subject.subjectName}}">
                           {{subject.subjectName}}
                         </mat-radio-button>
                       <br>
@@ -50,25 +43,23 @@
 
                    
               </mat-radio-group>
-            </div>
-            </div>
-        </mat-grid-tile>
-        <!--  -->
-        <mat-grid-tile *ngIf="show">
+              <div *ngIf="show" style="margin-top: 25px;">
+                <h4><i>BASIC ELECTRIC</i> materials are :  </h4>
+                 <mat-divider style="border-top:5px solid #5362ec;"></mat-divider>
             <mat-nav-list>
                 <mat-list-item *ngFor="let materialType of subjectDataById.materialTypes">
                    <!-- <a matLine   routerLink="material/{{ materialType.materialName }}" ></a> -->
-                   <button mat-icon-button (click)="showInfo(materialType.materialLink, materialType.materialName)">
+                   <button mat-icon-button (click)="showInfo(materialType.materialUrl, materialType.materialName)">
                       <!-- <mat-icon>info</mat-icon> -->
                       {{ materialType.materialName }}
                    </button>
+                    <mat-divider></mat-divider>
                 </mat-list-item>
               </mat-nav-list>
-        </mat-grid-tile>
+        </div></mat-grid-tile>
+</mat-grid-list>
+</div>
 
-    </mat-grid-list>
-    
- </div> 
 
 
 <app-footer></app-footer>

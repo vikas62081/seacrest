@@ -1,11 +1,11 @@
 
-
+<app-header></app-header>
 <mat-sidenav-container class="example-container">
     <mat-sidenav mode="side" opened>
         <mat-list>
             <mat-list-item >
                 
-                <button mat-icon-button (click)="showInfo()">
+                <button mat-icon-button >
                     User
                   
                 </button>
@@ -13,31 +13,39 @@
             <mat-divider></mat-divider>
             <mat-list-item>
              
-                
-                <button mat-icon-button (click)="showInfo()">
+                <a routerLink="/admin/securityquestion">
+                <button mat-icon-button >
+                   
                     security Question
+               
                    <!-- <mat-icon>info</mat-icon> -->
                 </button>
-
+            </a>
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item>
-                <button mat-icon-button (click)="showInfo()">
+                <button mat-icon-button >
+                    <a routerLink="/admin/stream">
                     Stream
+                    </a>
                    <!-- <mat-icon>info</mat-icon> -->
                 </button>
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item>
-                <button mat-icon-button (click)="showInfo()">
+                <button mat-icon-button >
+                    <a routerLink="/admin/subject">
                     Subject
+                    </a>
                    <!-- <mat-icon>info</mat-icon> -->
                 </button>
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item>
-                <button mat-icon-button (click)="showInfo()">
+                <button mat-icon-button >
+                    <a routerLink="/admin/material">
                     Material
+                </a>
                    <!-- <mat-icon>info</mat-icon> -->
                 </button>
             </mat-list-item>
@@ -46,7 +54,7 @@
     </mat-sidenav>
     <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
 </mat-sidenav-container>
-
+<app-footer></app-footer>
 
 
  
