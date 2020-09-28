@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark  " >
+<!-- <nav class="navbar navbar-expand-sm bg-primary navbar-dark  " >
     <div class="container-fluid">
 
         <div class="navbar-header">
@@ -26,5 +26,20 @@
       
       </ul>
     </div>
-  </nav>
+  </nav> -->
+   <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+     <div class="example-button-row">
+      <button mat-button routerLink="/home"> <mat-icon>home</mat-icon>Home</button>
+  <button mat-button > <mat-icon>info</mat-icon>About</button>
+  <button mat-button > <mat-icon>contacts</mat-icon>Contact</button>
+  <button mat-button routerLink="/signUp"> <mat-icon>account_circle</mat-icon>Sign Up</button>
+  <button mat-button routerLink="/login"> <mat-icon>login</mat-icon>Sign In</button>
+  <button mat-button routerLink="/admin/user"> <mat-icon>admin_panel_settings</mat-icon>Admin</button>
  
+</div>
+  </mat-toolbar>
